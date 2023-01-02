@@ -21,13 +21,18 @@ return require('packer').startup(function(use)
 	  end
   })
 
+  use {
+      'junegunn/vim-easy-align',
+      ft = { 'markdown' }
+  }
+
   use('nvim-treesitter/nvim-treesitter', { run = ':TSUpdate' })
 
-  use('nvim-treesitter/playground')
+  use 'nvim-treesitter/playground'
 
-  use('mbbill/undotree')
+  use 'mbbill/undotree'
 
-  use('tpope/vim-fugitive')
+  use 'tpope/vim-fugitive'
 
   use {
 	  'VonHeikemen/lsp-zero.nvim',
