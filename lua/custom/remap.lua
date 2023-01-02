@@ -52,3 +52,8 @@ map.set("n", "<C-j>", "<C-w>j")
 
 map.set("n", "<leader>x", "<cmd>!chmod +x %<CR>", { silent = true })
 
+map.set("n", "<Down>", "<C-w>-")
+map.set("n", "<Up>", "<C-w>+")
+map.set("n", "<Right>", "<C-w>>")
+map.set("n", "<Left>", "<C-w><")
+
