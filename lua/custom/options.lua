@@ -13,11 +13,7 @@ opt.wrap = false
 
 opt.swapfile = false
 opt.backup = false
-local home = os.getenv("HOME")
-if (home == nil) then
-    home = os.getenv("UserProfile")
-end
-opt.undodir = home .. "/.vim/undodir"
+opt.undodir = vim.fn.expand('~/.vim/undodir')
 opt.undofile = true
 
 opt.hlsearch = false
