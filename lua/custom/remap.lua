@@ -3,7 +3,9 @@ vim.g.mapleader = " "
 local map = vim.keymap
 
 map.set("n", "<leader>e", vim.cmd.Ex, { desc = "Open file explorer." })
--- map.set("n", "<leader>E", ":badd<CR>:Ex<CR>", { desc = "Open file explorer in new buffer." })
+-- map.set("n", "<leader>E", ":badd<CR>:Ex<CR>", { desc = "Open file explorer in new buffer." }) This doesn't seem to work?!?!?
+map.set("n", "<leader>c", ":bd<CR>", { desc = "Close current buffer." })
+map.set("n", "<leader>E", "<C-6>", { desc = "Open file explorer in new buffer." })
 
 map.set("n", "<leader>p", '"+p', { desc = "Paste after from clipboard." })
 map.set("n", "<leader>P", '"+P', { desc = "Paste before from clipboard." })
