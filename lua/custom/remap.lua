@@ -18,6 +18,8 @@ end)
 map.set("i", "<C-t>", function()
     vim.api.nvim_put({ os.date('%Y-%m-%d - %H:%M') }, 'c', false, true)
 end)
+map.set("i", "--", "<C-k>-M")
+map.set("i", "---", "--")
 
 -- Keep cursor in the middle
 map.set("n", "<C-d>", "<C-d>zz")
