@@ -2,8 +2,9 @@ local lsp = require('lsp-zero')
 lsp.preset('recommended')
 
 lsp.ensure_installed({
-	'tsserver',
-	'sumneko_lua'
+	'tsserver'
+    -- This is causing issues when I start vim
+	-- 'sumneko_lua'
 })
 
 -- Fix Undefined global 'vim'
