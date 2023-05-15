@@ -7,6 +7,8 @@ return require('packer').startup(function(use)
   -- Packer can manage itself
   use 'wbthomason/packer.nvim'
 
+  use 'github/copilot.vim'
+
   use {
 	  'nvim-telescope/telescope.nvim', tag = '0.1.0',
 	  -- or                            , branch = '0.1.x',
@@ -66,6 +68,16 @@ return require('packer').startup(function(use)
   use {
       "windwp/nvim-autopairs",
       config = function() require("nvim-autopairs").setup {} end
+  }
+
+  use {
+    'rmagatti/auto-session',
+    config = function()
+      require("auto-session").setup {
+        log_level = "error",
+        auto_session_suppress_dirs = { "~/", "~/Projects", "~/Downloads", "/"},
+      }
+    end
   }
 
 end)

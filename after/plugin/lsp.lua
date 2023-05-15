@@ -2,13 +2,13 @@ local lsp = require('lsp-zero')
 lsp.preset('recommended')
 
 lsp.ensure_installed({
-	'tsserver'
-    -- This is causing issues when I start vim
-	-- 'sumneko_lua'
+	'tsserver',
+    'denols',
+    'lua_ls'
 })
 
 -- Fix Undefined global 'vim'
-lsp.configure('sumneko_lua', {
+lsp.configure('lua_ls', {
     settings = {
         Lua = {
             diagnostics = {
@@ -16,6 +16,16 @@ lsp.configure('sumneko_lua', {
             }
         }
     }
+})
+
+lsp.configure('denols', {
+    single_file_support = false,
+    root_dir = require('lspconfig.util').root_pattern('deno.jsonc')
+})
+
+lsp.configure('tsserver', {
+    single_file_support = false,
+    root_dir = require('lspconfig.util').root_pattern('package.json')
 })
 
 local cmp = require('cmp')
@@ -27,10 +37,10 @@ local cmp_mappings = lsp.defaults.cmp_mappings({
   ["<C-Space>"] = cmp.mapping.complete(),
 })
 
--- -- disable completion with tab
--- -- this helps with copilot setup
--- cmp_mappings['<Tab>'] = nil
--- cmp_mappings['<S-Tab>'] = nil
+-- disable completion with tab
+-- this helps with copilot setup
+cmp_mappings['<Tab>'] = nil
+cmp_mappings['<S-Tab>'] = nil
 
 lsp.setup_nvim_cmp({
   mapping = cmp_mappings
@@ -56,6 +66,11 @@ lsp.on_attach(function(client, bufnr)
 
   vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts)
   vim.keymap.set("n", "K", vim.lsp.buf.hover, opts)
+  vim.keymap.set(
+    "n",
+    "<leader>e",
+    vim.diagnostic.open_float,
+    opts)
   vim.keymap.set("n", "<leader>vws", vim.lsp.buf.workspace_symbol, opts)
   vim.keymap.set("n", "<leader>vd", vim.diagnostic.open_float, opts)
   vim.keymap.set("n", "[d", vim.diagnostic.goto_next, opts)
