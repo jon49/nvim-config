@@ -65,3 +65,12 @@ map.set("n", "<Up>", "<C-w>+")
 map.set("n", "<Right>", "<C-w>>")
 map.set("n", "<Left>", "<C-w><")
 
+-- toggle dark/light mode
+map.set("n", "<leader>l", function()
+    if vim.o.background == "dark" then
+        vim.o.background = "light"
+    else
+        vim.o.background = "dark"
+    end
+end)
+
