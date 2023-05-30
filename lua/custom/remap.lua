@@ -12,7 +12,6 @@ map.set("n", "<leader>E", "<C-6>", { desc = "Open file explorer in new buffer." 
 map.set("n", "<S-q>", ":wq<CR>", { desc = "Write & quit." })
 map.set("n", "q", ":q<CR>", { desc = "Quit." })
 map.set("n", "<leader>w", ":w<CR>", { desc = "Save." })
-map.set("n", "jj", "<ESC>", { desc = "Escape." })
 
 map.set("n", "<leader>p", '"+p', { desc = "Paste after from clipboard." })
 map.set("n", "<leader>P", '"+P', { desc = "Paste before from clipboard." })
@@ -27,6 +26,7 @@ map.set("i", "<C-t>", function()
 end)
 map.set("i", "--", "<C-k>-M")
 map.set("i", "---", "--")
+map.set("i", "jj", "<ESC>", { desc = "Escape." })
 
 -- Keep cursor in the middle
 map.set("n", "<C-d>", "<C-d>zz")
