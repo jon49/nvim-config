@@ -9,7 +9,7 @@ map.set("n", "-", vim.cmd.Ex, { desc = "Open file explorer." })
 -- map.set("n", "<leader>E", ":badd<CR>:Ex<CR>", { desc = "Open file explorer in new buffer." }) This doesn't seem to work?!?!?
 map.set("n", "<leader>c", ":bd<CR>", { desc = "Close current buffer." })
 map.set("n", "<leader>E", "<C-6>", { desc = "Open file explorer in new buffer." })
-map.set("n", "<S-q>", ":wq<CR>", { desc = "Write & quit." })
+map.set("n", "Q", ":wq<CR>", { desc = "Write & quit." })
 map.set("n", "q", ":q<CR>", { desc = "Quit." })
 map.set("n", "<leader>w", ":w<CR>", { desc = "Save." })
 
