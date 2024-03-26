@@ -1,4 +1,4 @@
 require("custom.remap")
-require("custom.packer")
+require("custom.plugins")
 require("custom.options")
 
