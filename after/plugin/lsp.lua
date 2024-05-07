@@ -11,6 +11,7 @@ lsp.on_attach(function(client, bufnr)
 
   vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts)
   vim.keymap.set("n", "gh", vim.lsp.buf.hover, opts)
+  vim.keymap.set("n", "<S-k>", vim.lsp.buf.hover, opts)
   vim.keymap.set("n", "<leader>e", vim.diagnostic.open_float, opts)
   vim.keymap.set("n", "<leader>vws", vim.lsp.buf.workspace_symbol, opts)
   vim.keymap.set("n", "[d", vim.diagnostic.goto_next, opts)
@@ -26,12 +27,13 @@ require('mason-lspconfig').setup({
   ensure_installed = {
 	'tsserver',
     'denols',
-    'lua_ls'
+    'lua_ls',
+    'csharp_ls'
   },
   handlers = {
     -- lsp_zero.default_setup,
     lua_ls = function()
-      local lua_opts = lsp_zero.nvim_lua_ls()
+      local lua_opts = lsp.nvim_lua_ls()
       require('lspconfig').lua_ls.setup(lua_opts)
     end,
   }
@@ -58,9 +60,12 @@ lsp.configure('tsserver', {
     root_dir = require('lspconfig.util').root_pattern('package.json')
 })
 
+lsp.configure('csharp_ls', {
+    single_file_support = false
+})
 
 local cmp = require('cmp')
-local cmp_action = require('lsp-zero').cmp_action()
+local cmp_select = { behavior = cmp.SelectBehavior.Select }
 
 cmp.setup({
     window = {
