@@ -5,9 +5,9 @@ local map = vim.keymap
 -- Reload config
 map.set("n", "<leader>rc", function()
     if vim.fn.isdirectory(vim.fn.expand("~/AppData/Local/nvim")) == 1 then
-        vim.api.nvim_put({ "<cmd>luafile ~/AppData/Local/nvim/init.lua<CR>" }, 'c', false, true)
+        vim.api.nvim_command("luafile ~/AppData/Local/nvim/init.lua")
     else
-        vim.api.nvim_put({ "<cmd>luafile ~/.config/nvim/init.lua<CR>" }, 'c', false, true)
+        vim.api.nvim_command("luafile ~/.config/nvim/init.lua")
     end
 end, { desc = "Reload config." })
 
