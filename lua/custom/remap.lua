@@ -3,7 +3,13 @@ vim.g.mapleader = " "
 local map = vim.keymap
 
 -- Reload config
-map.set("n", "<leader>rc", "<cmd>luafile ~/.config/nvim/init.lua<CR>", { desc = "Reload config." })
+map.set("n", "<leader>rc", function()
+    if vim.fn.isdirectory(vim.fn.expand("~/AppData/Local/nvim")) == 1 then
+        vim.api.nvim_put({ "<cmd>luafile ~/AppData/Local/nvim/init.lua<CR>" }, 'c', false, true)
+    else
+        vim.api.nvim_put({ "<cmd>luafile ~/.config/nvim/init.lua<CR>" }, 'c', false, true)
+    end
+end, { desc = "Reload config." })
 
 map.set("n", "-", vim.cmd.Ex, { desc = "Open file explorer." })
 -- map.set("n", "<leader>E", ":badd<CR>:Ex<CR>", { desc = "Open file explorer in new buffer." }) This doesn't seem to work?!?!?
@@ -19,14 +25,15 @@ map.set("n", "<leader>P", '"+P', { desc = "Paste before from clipboard." })
 map.set("n", "<leader>s", "vip:sort i<CR>{{jV}}kJ0j", { desc = "Insensitive sort in paragraph and join." })
 map.set("n", "<leader>S", "0f@f@hs<CR><CR><ESC>V:s/@/\\r@/g<CR>{dd<ESC>", { desc = "Expand @ tags." })
 map.set("i", "<C-d>", function()
-    vim.api.nvim_put({ os.date('%Y-%m-%d') }, 'c', false, true)
+    vim.api.nvim_put({ tostring(os.date('%Y-%m-%d')) }, 'c', false, true)
 end)
 map.set("i", "<C-t>", function()
-    vim.api.nvim_put({ os.date('%Y-%m-%d - %H:%M') }, 'c', false, true)
+    vim.api.nvim_put({ tostring(os.date('%Y-%m-%d - %H:%M')) }, 'c', false, true)
 end)
-map.set("i", "--", "<C-k>-M")
+map.set("i", "--", "—")
 map.set("i", "---", "--")
 map.set("i", "jj", "<ESC>", { desc = "Escape." })
+map.set("i", ";;", "<END>;<ESC>")
 
 -- Keep cursor in the middle
 map.set("n", "<C-d>", "<C-d>zz")
@@ -76,4 +83,3 @@ map.set("n", "<leader>l", function()
         vim.o.background = "dark"
     end
 end)
-
