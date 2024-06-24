@@ -11,6 +11,8 @@ map.set("n", "<leader>rc", function()
     end
 end, { desc = "Reload config." })
 
+map.set("t", "<ESC>", "<C-\\><C-n>", { desc = "Terminal normal mode from terminal insert mode." })
+
 map.set("n", "-", vim.cmd.Ex, { desc = "Open file explorer." })
 -- map.set("n", "<leader>E", ":badd<CR>:Ex<CR>", { desc = "Open file explorer in new buffer." }) This doesn't seem to work?!?!?
 map.set("n", "<leader>c", ":bd<CR>", { desc = "Close current buffer." })
