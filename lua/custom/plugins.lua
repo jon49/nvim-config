@@ -18,14 +18,6 @@ require("lazy").setup({
     priority = 1000,
     config = true,
   },
-  {
-    "rest-nvim/rest.nvim",
-    ft = "http",
-    dependencies = { { "vhyrro/luarocks.nvim" } },
-    config = function()
-      require("rest-nvim").setup({})
-    end
-  },
 
   {
 	  'nvim-telescope/telescope.nvim', version = '0.1.x',
