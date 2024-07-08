@@ -1,5 +1,9 @@
 local opt = vim.opt
 
+if vim.fn.isdirectory(vim.fn.expand("~/AppData/Local/nvim")) == 1 then
+    vim.o.shell = vim.fn.expand("C:/Windows/System32/WindowsPowerShell/v1.0/powershell.exe")
+end
+
 opt.nu = true
 
 opt.bg = "dark"
