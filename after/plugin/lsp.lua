@@ -25,10 +25,11 @@ end)
 require('mason').setup({})
 require('mason-lspconfig').setup({
   ensure_installed = {
-	'tsserver',
+	'ts_ls',
     'denols',
     'lua_ls',
-    'csharp_ls'
+    'csharp_ls',
+    'v_analyzer'
   },
   handlers = {
     -- lsp_zero.default_setup,
@@ -55,12 +56,16 @@ lsp.configure('denols', {
     root_dir = require('lspconfig.util').root_pattern('deno.jsonc')
 })
 
-lsp.configure('tsserver', {
+lsp.configure('ts_ls', {
     single_file_support = false,
     root_dir = require('lspconfig.util').root_pattern('package.json')
 })
 
 lsp.configure('csharp_ls', {
+    single_file_support = false
+})
+
+lsp.configure('v_analyzer', {
     single_file_support = false
 })
 
