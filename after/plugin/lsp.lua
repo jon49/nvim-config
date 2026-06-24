@@ -28,7 +28,9 @@ require('mason-lspconfig').setup({
     'denols',
     'lua_ls',
     'csharp_ls',
-    'v_analyzer'
+    'v_analyzer',
+    'emmet_language_server',
+    'html'
   },
   handlers = {
     -- lsp_zero.default_setup,
@@ -67,6 +69,10 @@ lsp.configure('csharp_ls', {
 lsp.configure('v_analyzer', {
     single_file_support = false
 })
+
+lsp.configure('emmet_language_server', {})
+
+lsp.configure('html', {})
 
 local cmp = require('cmp')
 local cmp_select = { behavior = cmp.SelectBehavior.Select }
