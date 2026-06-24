@@ -8,6 +8,8 @@ opt.nu = true
 
 opt.bg = "dark"
 
+opt.backup = true
+
 opt.tabstop = 4
 opt.softtabstop = 4
 opt.shiftwidth = 4

@@ -39,6 +39,7 @@ map.set("i", "--", "—")
 map.set("i", "---", "--")
 map.set("i", "jj", "<ESC>", { desc = "Escape." })
 map.set("i", ";;", "<END>;<ESC>")
+map.set("i", ";,", "<END>")
 
 -- Keep cursor in the middle
 map.set("n", "<C-d>", "<C-d>zz")
