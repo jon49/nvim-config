@@ -67,7 +67,7 @@ map.set("v", "<leader>=", 's<C-r>=<C-r>"<CR><ESC>', { desc = "Perform math opera
 
 map.set("n", "Q", "<nop>")
 map.set("n", "<C-f>", "<cmd>silent !tmux neww tmux-sessionizer<CR>")
-map.set("n", "<leader>f", vim.lsp.buf.format)
+map.set("n", "<leader>f", function() require("conform").format({ async = true }) end)
 
 map.set("n", "<Tab>", ":bnext<CR>")
 map.set("n", "<S-Tab>", ":bprev<CR>")

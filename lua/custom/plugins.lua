@@ -41,8 +41,12 @@ require("lazy").setup({
   {
       'nvim-treesitter/nvim-treesitter',
       build = ':TSUpdate',
+      -- without this, lazy passes opts to require('nvim-treesitter').setup(),
+      -- which is a no-op, and highlighting never turns on
+      main = 'nvim-treesitter.configs',
       opts = {
-          ensure_installed = { "lua", "javascript", "typescript", "markdown", "http", "json" },
+          -- html/css are needed for html`...` / css`...` injections in JS/TS
+          ensure_installed = { "lua", "javascript", "typescript", "markdown", "http", "json", "html", "css" },
           auto_install = true,
           highlight = {
             -- `false` will disable the whole extension
@@ -115,6 +119,20 @@ require("lazy").setup({
 		  {'L3MON4D3/LuaSnip'},
 		  {'rafamadriz/friendly-snippets'},
 	  }
+  },
+
+  {
+    'stevearc/conform.nvim',
+    opts = {
+      formatters_by_ft = {
+        javascript      = { 'prettierd', 'prettier', stop_after_first = true },
+        typescript      = { 'prettierd', 'prettier', stop_after_first = true },
+        javascriptreact = { 'prettierd', 'prettier', stop_after_first = true },
+        typescriptreact = { 'prettierd', 'prettier', stop_after_first = true },
+      },
+      -- other filetypes (Lua, C#, etc.) still use the LSP formatter
+      default_format_opts = { lsp_format = 'fallback' },
+    },
   },
 
   {
